@@ -1,0 +1,7 @@
+1 task - Search
+
+Write a program that generates an array of random numbers. And then it searches for the number given by the user in this array.
+
+2 task - Sort and Search
+
+The task is getting complicated. You must create a program that generates an array of random numbers. Then the array of numbers is sorted by one of the stable sorting algorithms (at the student’s choice). After that, the program should find the desired number specified by the user in the sorted array by the binary search algorithm.

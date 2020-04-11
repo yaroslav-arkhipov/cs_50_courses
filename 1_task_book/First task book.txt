@@ -1,0 +1,18 @@
+1 task - Water consumption
+
+	It is logical: the longer you take a shower, the more water goes into this process. Let's estimate how much? Even if your shower is barely open, approximately 6 liters of water flow from it per minute. And these are 12 bottles of water that you carry with you to drink. Usually a person takes a shower for about 10 minutes. In total, to wash, you need 120 half-liter bottles. A lot!
+1.The program asks the user for the number of minutes spent in the shower
+2. User enters a positive integer
+3. The program displays the number of bottles consumed by the user.
+
+2 task - Mario with us
+
+	Our program will draw a half-pyramid similar to what you see, but right in the console, without graphics: each of the blocks will consist of a hash icon (#). Even if you have not yet figured out how to do this, believe me: it's simple. To make the task more interesting, we add the ability to set the height of the half-pyramid using a non-negative integer from 0 to 23. The height of the pyramid in the picture is considered to be at the highest place, that is equal to 8. If the user enters a number incorrectly, you need to ask him to do it again time. Then generate (using printf pyramid).
+	Take care to align the lower left corner of your half-pyramid with the left edge of the terminal window, as in the example below. Underlined text is what the user types on their own.
+
+3 task - Time to take change 
+
+	Imagine that the cashier owes the buyer a change of 41 cents, and he has cylinders on his belt with coins for change with a face value of 25, 10, 5 and 1 cent. Guided by the "greedy" algorithm, the cashier will immediately want to give out the maximum, at the first step. At this step, the best or best solution would be 25 pence. 41-25 = 16. It remains to issue 16 pence. Obviously, 25 pence is too much, so 10 is left. 16-10 = 6. Now we give out 5 pence according to the same principle, and then - 1. Thus, the buyer will receive only four coins in denominations of 25, 10, 5 and 1 pence.
+	The program should:
+1. Ask the user how much change to give out
+2. Calculate the minimum number of coins with which you can do this

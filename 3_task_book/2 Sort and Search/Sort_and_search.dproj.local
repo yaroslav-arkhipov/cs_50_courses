@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.852,C:\Users\Yaroslav\Documents\Embarcadero\Studio\Projects\Unit3.pas=C:\Users\Yaroslav\Desktop\cs50\3_task_book\2 Sort and Search\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.637,C:\Users\Yaroslav\Documents\Embarcadero\Studio\Projects\Project3.dproj=C:\Users\Yaroslav\Desktop\cs50\3_task_book\2 Sort and Search\Project3.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.071,=C:\Users\Yaroslav\Desktop\cs50\3_task_book\2 Sort and Search\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.163,C:\Users\Yaroslav\Desktop\cs50\3_task_book\2 Sort and Search\Project3.dproj=C:\Users\Yaroslav\Desktop\cs50\3_task_book\2 Sort and Search\Sort.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.821,=C:\Users\Yaroslav\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.852,C:\Users\Yaroslav\Documents\Embarcadero\Studio\Projects\Unit3.fmx=C:\Users\Yaroslav\Desktop\cs50\3_task_book\2 Sort and Search\Unit3.fmx</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.483,C:\Users\Yaroslav\Desktop\cs50\3_task_book\2 Sort and Search\Sort.dproj=C:\Users\Yaroslav\Desktop\cs50\3_task_book\2 Sort and Search\Sort_and_search.dproj</Transaction>
+    <Transaction>2020.04.11 18:46:24.186,C:\Users\Yaroslav\Desktop\cs50\3_task_book\2 Sort and Search\Unit3.pas=</Transaction>
+    <Transaction>2020.04.11 18:47:06.226,=C:\Users\Yaroslav\Desktop\cs50\3_task_book\2 Sort and Search\Unit3.pas</Transaction>
+    <Transaction>2020.04.11 18:47:22.209,C:\Users\Yaroslav\Desktop\cs50\3_task_book\2 Sort and Search\Unit1.pas=</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
+</BorlandProject>

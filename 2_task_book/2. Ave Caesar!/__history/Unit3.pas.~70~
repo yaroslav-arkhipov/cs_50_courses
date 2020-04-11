@@ -1,0 +1,150 @@
+unit Unit3;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Edit, FMX.Controls.Presentation;
+
+type
+  TForm3 = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+  cAUp, cALow: array[0..26] of Char;
+  cRup, cRLow: array[0..32] of Char;
+  c: Char;
+
+implementation
+
+{$R *.fmx}
+
+procedure TForm3.Button1Click(Sender: TObject);
+var s, s1:string;
+i:array[1..255] of integer;
+j, k, key, m:integer;
+c: array [1..255] of Char;
+begin
+s1:='';
+m:=0;
+s:=Edit1.Text;
+if Edit2.Text='' then
+  key:=0
+else
+  key:=StrToInt(Edit2.Text);
+if s.Length<1 then
+  ShowMessage('Пустая строка')
+else
+  begin
+  for k:=1 to s.Length do
+    begin
+      i[k]:=Ord(s[k]);
+     if (i[k]>64) and (i[k]<91) then             //uppercase english
+      begin
+         c[k]:=Char(i[k]);
+         for j:=0 to 26 do
+         begin
+           if c[k]=cAUp[j] then
+           begin
+            m:=j;
+            m:=(j+key) mod 26;
+            c[k]:=cAUp[m];
+            Break;
+           end;
+         end;
+     end else if (i[k]>96) and (i[k]<123) then                    //small english
+      begin
+        c[k]:=Char(i[k]);
+         for j:=0 to 26 do
+         begin
+           if c[k]=cALow[j] then
+           begin
+            m:=j;
+            m:=(j+key) mod 26;
+            c[k]:=cALow[m];
+            Break;
+           end;
+         end;
+     end else if (i[k]>1039) and (i[k]<224) then                   //uppercase russian
+       begin
+        c[k]:=Char(i[k]);
+         for j:=0 to 32 do
+         begin
+           if c[k]=cRUp[j] then
+           begin
+            m:=j;
+            m:=(j+key) mod 32;
+            c[k]:=cRUp[m];
+            Break;
+           end;
+         end;
+     end else if (i[k]>223) and (i[k]<256) then                   //small russian
+      begin
+       c[k]:=Char(i[k]);
+         for j:=0 to 32 do
+         begin
+           if c[k]=cRLow[j] then
+           begin
+            m:=j;
+            m:=(j+key) mod 32;
+            c[k]:=cRLow[m];
+            Break;
+           end;
+         end;
+     end
+     else
+         begin
+           c[k]:=Char(i[k]);
+         end;
+     s1:=s1+c[k];
+    end;
+  end;
+ Label3.Text:=s1;
+end;
+
+procedure TForm3.FormCreate(Sender: TObject);
+var n:integer;
+begin
+//**********************Create arrays of chars block*****************************
+n:=0;
+for c:='A' to 'Z' do
+begin
+  cAUp[n]:=c;
+  n:=n+1;
+end;
+n:=0;
+for c:='a' to 'z' do
+begin
+  cALow[n]:=c;
+  n:=n+1;
+end;
+n:=0;
+for c:='А' to 'Я' do
+begin
+  cRUp[n]:=c;
+  n:=n+1;
+end;
+n:=0;
+for c:='а' to 'я' do
+begin
+  cRLow[n]:=c;
+  n:=n+1;
+end;
+//************************End block***************************
+end;
+
+end.

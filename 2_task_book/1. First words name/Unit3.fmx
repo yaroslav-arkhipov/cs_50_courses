@@ -1,0 +1,42 @@
+object Form3: TForm3
+  Left = 0
+  Top = 0
+  Caption = 'Form3'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Label1: TLabel
+    Position.X = 8.000000000000000000
+    Position.Y = 104.000000000000000000
+    Text = #1048#1085#1080#1094#1080#1072#1083#1099': '
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Position.X = 8.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #1055#1086#1083#1091#1095#1080#1090#1100' '#1080#1085#1080#1094#1080#1072#1083#1099
+    OnClick = Button1Click
+  end
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 2
+    Position.X = 8.000000000000000000
+    Position.Y = 40.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label2: TLabel
+    Position.X = 8.000000000000000000
+    Position.Y = 16.000000000000000000
+    Text = #1042#1074#1077#1076#1080#1090#1077' '#1060#1048#1054':'
+    TabOrder = 3
+  end
+end

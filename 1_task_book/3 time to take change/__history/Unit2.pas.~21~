@@ -1,0 +1,82 @@
+unit Unit2;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.ScrollBox,
+  FMX.Memo, FMX.StdCtrls, FMX.Edit, FMX.Controls.Presentation;
+
+type
+  TForm2 = class(TForm)
+    Button1: TButton;
+    Edit1: TEdit;
+    Label1: TLabel;
+    Memo1: TMemo;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.fmx}
+
+procedure TForm2.Button1Click(Sender: TObject);
+var f:real;
+c25, c10, c5, c1, i:integer;
+s:string;
+begin
+Memo1.Lines.Clear;
+c25:=0;
+c10:=0;
+c5:=0;
+c1:=0;
+s:=Edit1.Text;
+for i:=0 to s.Length do
+begin 
+if s[i]='.' then
+  s[i]:=',';
+end;
+f:=StrToFloat(s);
+ if f<0 then
+ ShowMessage('Введите неотрицательное число')
+ else
+ begin
+ f:=f*100;
+ while f>0 do
+  begin
+  if (f>25) or (f=25) then
+   begin
+   inc(c25);
+   f:=f-25;
+  end
+  else if (f>10) or (f=10) then
+  begin
+   inc(c10);
+   f:=f-10
+  end
+  else if (f>5) or (f=5) then
+  begin
+   inc(c5);
+   f:=f-5;
+  end
+  else if (f>1) or (f=1) then
+  begin
+    inc(c1);
+    f:=f-1;
+  end;
+  end;
+ Memo1.Lines.Add('Монеток номиналом 25 центов необходимо: '+FloatToStr(c25));
+ Memo1.Lines.Add('Монеток номиналом 10 центов необходимо: '+FloatToStr(c10));
+ Memo1.Lines.Add('Монеток номиналом 5 центов необходимо: '+FloatToStr(c5));
+ Memo1.Lines.Add('Монеток номиналом 1 цент необходимо: '+FloatToStr(c1));
+ end;
+end;
+
+end.

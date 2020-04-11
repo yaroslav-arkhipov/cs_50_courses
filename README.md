@@ -1,0 +1,6 @@
+Description
+
+CS50 (Computer Science 50) is an introductory offline and online computer technology course at Harvard and, from 2015, Yale University. Course material is available free of charge, for a fee it is possible to obtain various certificates. In 2016, the course underwent significant changes and incorporated the best practices for 20 years of teaching the course. In 2016, the CS50 lecture course included the following topics: Scratch, C programming language, data arrays, sorting algorithms, computer memory, data structures and data compression, Python, SQL databases, Javascript, virtual reality. Excerpts from the 2016 lecture course are available for viewing in virtual reality mode on the CS50 Youtube channel. All course materials are available in English.
+
+
+In this repository, I will complete the course assignments. Tasks will be written in the Delphi programming language. All tasks are implemented in the IDE RAD Studio 10.3 Rio. If you wish, everyone can download and run the lesson he needs. Tasks are broken down by week for each week in the folder there is a description of the tasks in a separate text file. No additional dependencies are required, everything will be implemented using standard Delphi tools.

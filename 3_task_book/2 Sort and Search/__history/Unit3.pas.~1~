@@ -1,0 +1,762 @@
+unit Unit3;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.ScrollBox, FMX.Memo, FMX.Controls.Presentation, FMX.Edit, FMX.Objects;
+
+type
+  BubbleSort = class(TThread) //BubbleSort - сортировка методом пузырька.
+private
+  { Private declarations }
+protected
+  procedure Execute; override;
+end;
+type
+  StirSort = class(TThread) //StirSort - сортировка перемешиванием.
+protected
+  procedure Execute; override;
+end;
+type
+  InsSort = class(TThread) //InsSort - сортировка вставками.
+protected
+  procedure Execute; override;
+end;
+type
+  GnomeSort = class(TThread) //GnomeSort - алгоритм гномьей сортировки.
+protected
+  procedure Execute; override;
+end;
+type
+  MergeSort = class(TThread) //MergeSort - алгоритм сортировки слиянием.
+protected
+  procedure Execute; override;
+end;
+type
+  BinTreeSort = class(TThread) //BinTreeSort - алгоритм бинарным деревом.
+protected
+  procedure Execute; override;
+end;
+type
+  TData = Integer;  // тип ключа - integer
+  TPNode = ^TNode;  //указатель на узел
+  TNode = record    //тип узла дерева
+    Data : TData;   //ключ узла дерева
+    PLeft, PRight : TPNode; //указатели на левый и правый узел
+  end;
+type
+  TForm3 = class(TForm)
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Button1: TButton;
+    Button2: TButton;
+    GroupBox1: TGroupBox;
+    Label5: TLabel;
+    SearchEdit: TEdit;
+    Button3: TButton;
+    GroupBox2: TGroupBox;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    CheckBox3: TCheckBox;
+    CheckBox4: TCheckBox;
+    CheckBox5: TCheckBox;
+    CheckBox6: TCheckBox;
+    Label8: TLabel;
+    Label10: TLabel;
+    Label9: TLabel;
+    CheckBox7: TCheckBox;
+    Button4: TButton;
+    Image1: TImage;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label6: TLabel;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure CheckBox7Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+  type mass=array of integer;
+var
+  Form3: TForm3;
+  Str:string;
+  randNumLen: integer;
+  originArr: array of integer;
+  numArrBbl: array of integer;
+  numArrStr: array of integer;
+  numArrIns: array of integer;
+  numArrGnm: array of integer;
+  numArrMrg: array of integer;
+  numArrBinTr: array of TData;
+  BblAlg, StrAlg, InsAlg, GnmAlg, MrgAlg, BinTrAlg: real;
+  BblCounter, StrCounter, InsCounter, GnmCounter, MrgCounter, BinTrCounter: LongInt;
+  BblBool, StrBool, InsBool, GnmBool, MrgBool, BinTrBool: boolean;
+
+implementation
+
+{$R *.fmx}
+
+uses Unit1;
+//***************Освобождение памяти от дерева*************
+procedure TreeFree(var aPNode : TPNode);
+begin
+  if aPNode <> nil then
+  begin
+  {освобождение левой и правой ветвей дерева}
+    TreeFree(aPNode^.PLeft);
+    TreeFree(aPNode^.PRight);
+    Dispose(aPNode); //освобождение памяти
+    aPNode := nil;   //обнуление указателя
+  end;
+end;
+//*************************BubbleSort**********************
+//*********************************************************
+//*********************************************************
+procedure BubbleSort.Execute;
+var
+i, j, temp:integer;
+begin
+SetLength(numArrBbl, randNumLen);
+{$R-}
+  for i:=0 to randNumLen-1 do
+  numArrBbl[i] := originArr[i];
+{$R+}
+BblAlg:=GetTickCount;
+ begin
+      TThread.Queue(nil,
+        procedure
+        begin
+          Form1.Memo2.Lines.Clear;
+        end
+      );
+ end;
+  for i:=1 to randNumLen-1 do
+    begin
+      for j:=0 to randNumLen-i-1 do
+        begin
+          if numArrBbl[j] > numArrBbl[j+1] then
+            begin
+              temp:=numArrBbl[j];
+              numArrBbl[j]:=numArrBbl[j+1];
+              numArrBbl[j+1]:=temp;
+            end;
+        end;
+    end;
+BblAlg:=(GetTickCount - BblAlg);
+   begin
+      TThread.Queue(nil,
+        procedure
+        var j:integer;
+        begin
+        if BblAlg/1000<0.0001 then
+          Form3.Label8.Text:='Сортировка пузырьком: время: менее 0.0001 секунды, количество повторений: '+IntToStr(BblCounter)
+        else
+          Form3.Label8.Text:='Сортировка пузырьком: время: '+ Format('%.4n сек.', [BblAlg/1000])+', количество повторений: '+IntToStr(BblCounter);
+          if Form3.CheckBox7.IsChecked=True then
+          begin
+            for j:=0 to randNumLen-1 do
+            Form1.Memo2.Lines.Add(IntToStr(numArrBbl[j]));
+          end;
+        end
+      );
+ end;
+ BblBool:=true;
+Terminate;
+end;
+//*************************StirSort************************
+//*********************************************************
+//*********************************************************
+procedure StirSort.Execute;
+var
+i, j, temp, left, right:integer;
+begin
+SetLength(numArrStr, randNumLen);
+{$R-}
+  for i:=0 to randNumLen-1 do
+  numArrStr[i] := originArr[i];
+{$R+}
+StrAlg:=GetTickCount;
+begin
+      TThread.Queue(nil,
+        procedure
+        begin
+          Form1.Memo3.Lines.Clear;
+        end
+      );
+ end;
+left:=0;
+right:=randNumLen-1;
+while left<right do
+  begin
+   i:=left;
+    while i<right do
+      begin
+        if (numArrStr[i] > numArrStr[i+1]) then
+          begin
+            temp:=numArrStr[i];
+            numArrStr[i]:=numArrStr[i+1];
+            numArrStr[i+1]:=temp;
+
+          end;
+          inc(i);
+      end;
+      right:=right-1;
+      j:=right;
+    while j>left do
+      begin
+        if (numArrStr[j-1] > numArrStr[j]) then
+          begin
+            temp:=numArrStr[j];
+            numArrStr[j]:=numArrStr[j-1];
+            numArrStr[j-1]:=temp;
+            inc(StrCounter);
+          end;
+          dec(j);
+      end;
+      left:=left+1;
+  end;
+  StrAlg:=(GetTickCount - StrAlg);
+  begin
+      TThread.Queue(nil,
+        procedure
+        var j:integer;
+        begin
+        if StrAlg/1000<0.0001 then
+          Form3.Label9.Text:='Сортировка перемешиванием: время: менее 0.0001 секунды, количество повторений: '+IntToStr(StrCounter)
+        else
+          Form3.Label9.Text:='Сортировка перемешиванием: время: '+ Format('%.4n сек.', [StrAlg/1000])+' количество повторений: '+IntToStr(StrCounter);
+          if Form3.CheckBox7.IsChecked=True then
+            begin
+              for j:=0 to randNumLen-1 do
+              Form1.Memo3.Lines.Add(IntToStr(numArrStr[j]));
+             end;
+        end
+      );
+ end;
+ StrBool:=true;
+Terminate;
+end;
+//*************************InsSort************************
+//*********************************************************
+//*********************************************************
+procedure InsSort.Execute;
+var
+i, j, k, temp:integer;
+function Seek(min, max, T: Integer): Integer;
+  begin
+    Result:=min+Round((max-min)/2);
+    if max-min<=1 then
+      Result:=Result+1 else
+    if T<numArrIns[Result]
+      then
+        Result:=seek(min, Result, T)
+      else
+        Result:=seek(Result, max, T)
+  end;
+begin
+SetLength(numArrIns, randNumLen);
+{$R-}
+  for i:=0 to randNumLen-1 do
+  numArrIns[i]:=originArr[i];
+{$R+}
+InsAlg:=GetTickCount;
+  begin
+      TThread.Queue(nil,
+        procedure
+        begin
+          Form1.Memo4.Lines.Clear;
+        end
+      );
+ end;
+begin
+for i:=1 to randNumLen-1 do
+  begin
+    if numArrIns[i]>=numArrIns[i-1] then continue;
+    if numArrIns[i]<numArrIns[0]
+      then j:=0
+      else j:=Seek(0, i-1, numArrIns[i]);
+    temp:=numArrIns[i];
+    for k:=i downto j+1 do
+    begin
+    numArrIns[k]:=numArrIns[k-1];
+    end;
+    numArrIns[j]:=temp;
+  end;
+  InsAlg:=(GetTickCount - InsAlg);
+    begin
+      TThread.Queue(nil,
+        procedure
+        var j:integer;
+        begin
+        if InsAlg/1000<0.0001 then
+          Form3.Label10.Text:='Сортировка вставками: время: менее 0.0001 секунды, количество повторений: '+IntToStr(InsCounter)
+        else
+        Form3.Label10.Text:='Сортировка вставками: время: '+ Format('%.4n сек.', [InsAlg/1000])+' количество повторений: '+IntToStr(InsCounter);
+        if Form3.CheckBox7.IsChecked=True then
+        begin
+          for j:=0 to randNumLen-1 do
+          Form1.Memo4.Lines.Add(IntToStr(numArrIns[j]));
+        end;
+        end
+      );
+ end;
+ InsBool:=true;
+Terminate;
+end;
+end;
+//*************************GnomeSort************************
+//*********************************************************
+//*********************************************************
+procedure GnomeSort.Execute;
+var
+i, j, temp:integer;
+begin
+SetLength(numArrGnm, randNumLen);
+{$R-}
+  for i:=0 to randNumLen-1 do
+  numArrGnm[i] := originArr[i];
+{$R+}
+GnmAlg:=GetTickCount;
+  begin
+      TThread.Queue(nil,
+        procedure
+        begin
+          Form1.Memo5.Lines.Clear;
+        end
+      );
+ end;
+ i:=1;
+ j:=2;
+ while i<randNumLen do
+   begin
+     if numArrGnm[i-1]<numArrGnm[i] then
+        begin
+          i:=j;
+          j:=j+1;
+        end
+        else
+        begin
+         temp:=numArrGnm[i];
+         numArrGnm[i]:=numArrGnm[i-1];
+         numArrGnm[i-1]:=temp;
+         dec(i);
+         if i=0 then
+          begin
+            i:=j;
+            j:=j+1;
+          end;
+        end;
+   end;
+ GnmAlg:=(GetTickCount - GnmAlg);
+    begin
+      TThread.Queue(nil,
+        procedure
+        var j:integer;
+        begin
+        if GnmAlg/1000<0.0001 then
+          Form3.Label3.Text:='Сортировка гномьим алгоритмом: время: менее 0.0001 секунды, количество повторений: '+IntToStr(GnmCounter)
+        else
+        Form3.Label3.Text:='Сортировка гномьим алгоритмом: время: '+ Format('%.4n сек.', [GnmAlg/1000])+' количество повторений: '+IntToStr(GnmCounter);
+        if Form3.CheckBox7.IsChecked=True then
+        begin
+          for j:=0 to randNumLen-1 do
+          Form1.Memo5.Lines.Add(IntToStr(numArrGnm[j]));
+        end;
+        end
+      );
+ end;
+ GnmBool:=true;
+Terminate;
+end;
+//*************************MergeSort************************
+//*********************************************************
+//*********************************************************
+procedure MergeSort.Execute;
+  var i:integer;
+function Merge(left, split, right:integer): Integer;
+ Var i,j,k:integer;
+ tmpArr:array of integer;
+begin
+  SetLength(tmpArr, randNumLen);
+  i := left;
+  j := split + 1;
+  k := 0;
+while (i<=split) and (j<=right) do
+ begin
+  if numArrMrg[i]>numArrMrg[j] then
+    begin
+      tmpArr[k] := numArrMrg[j];
+      inc(j);
+    end
+    else
+  begin
+    tmpArr[k] := numArrMrg[i];
+    inc(i);
+  end;
+    inc(k);
+ end;
+if i<=split then      //Если первая часть не пуста
+    for j:=i to split do
+    begin
+      tmpArr[k] := numArrMrg[j];
+      inc(k);
+    end
+else                  //Если вторая часть не пуста
+    for i:=j to right do
+    begin
+      tmpArr[k] := numArrMrg[i];
+      inc(k);
+    end;
+    //Перемещаем из tmp в numArrMrg
+    Move(tmpArr[0], numArrMrg[left], k*SizeOf(randNumLen));
+end;
+
+function Sort(Left,Right: integer): Integer;
+    Var Split:integer;
+  begin
+   if (Left >= Right) then Exit;
+    Split:=(Left+Right) div 2;
+    Sort(Left,Split);
+    Sort(Split+1,Right);
+    Merge(Left,Split,Right);
+  end;
+begin
+SetLength(numArrMrg, randNumLen);
+{$R-}
+  for i:=0 to randNumLen-1 do
+  numArrMrg[i] := originArr[i];
+{$R+}
+MrgAlg:=GetTickCount;
+  begin
+      TThread.Queue(nil,
+        procedure
+        begin
+          Form1.Memo6.Lines.Clear;
+        end
+      );
+ end;
+ Sort(0,randNumLen-1);
+ MrgAlg:=(GetTickCount - MrgAlg);
+    begin
+      TThread.Queue(nil,
+        procedure
+        var j:integer;
+        begin
+        if MrgAlg/1000<0.0001 then
+          Form3.Label4.Text:='Сортировка слиянием: время: менее 0.0001 секунды, количество повторений: '+IntToStr(MrgCounter)
+        else
+        Form3.Label4.Text:='Сортировка слиянием: время: '+ Format('%.4n сек.', [MrgAlg/1000])+' количество повторений: '+IntToStr(MrgCounter);
+        if Form3.CheckBox7.IsChecked=True then
+        begin
+          for j:=0 to randNumLen-1 do
+          Form1.Memo6.Lines.Add(IntToStr(numArrMrg[j]));
+        end;
+        end
+      );
+ end;
+ MrgBool:=true;
+Terminate;
+end;
+//*************************BinaryTreeSort******************
+//*********************************************************
+//*********************************************************
+procedure BinTreeSort.Execute;
+var
+i:integer;
+PTree : TPNode;
+function AddNodeAsc(var aPNode : TPNode; const aData : TData):integer;
+begin
+  if aPNode = nil then {Вставка узла.}
+  begin
+    New(aPNode);           {Выделяем память для узла.}
+    aPNode^.Data := aData; {Записываем в узел значение ключа.}
+    Result:=aPNode^.Data;
+    aPNode^.PLeft := nil;  {Обнуление указателя на левого потомка.}
+    aPNode^.PRight := nil; {Обнуление указателя на правого потомка.}
+  end
+  else if aData <= aPNode^.Data then {Поиск места вставки в левой ветви.}
+    Result:=AddNodeAsc(aPNode^.PLeft, aData)
+  else if aData > aPNode^.Data then  {Поиск места вставки в правой ветви.}
+    Result:=AddNodeAsc(aPNode^.PRight, aData);
+end;
+function AddNodeDesc(var aPNode : TPNode; const aData : TData):integer;
+begin
+  if aPNode = nil then {Вставка узла.}
+  begin
+    New(aPNode);           {Выделяем память для узла.}
+    aPNode^.Data := aData; {Записываем в узел значение ключа.}
+    aPNode^.PLeft := nil;  {Обнуление указателя на левого потомка.}
+    aPNode^.PRight := nil; {Обнуление указателя на правого потомка.}
+  end
+  else if aData >= aPNode^.Data then {Поиск места вставки в левой ветви.}
+    Result:=AddNodeDesc(aPNode^.PLeft, aData)
+  else if aData < aPNode^.Data then  {Поиск места вставки в правой ветви.}
+    Result:=AddNodeDesc(aPNode^.PRight, aData);
+end;
+function Sort(const aPNode : TPNode; var aArr : array of TData; var aI : Integer):integer;
+begin
+  if aPNode <> nil then
+  begin
+    Sort(aPNode^.PLeft, aArr, aI);  {Рекурсивный вызов для левой ветви.}
+    aArr[aI] := aPNode^.Data;       {Запись текущего узла.}
+    Inc(aI);                        {Следующий индекс массива.}
+    Sort(aPNode^.PRight, aArr, aI); {Рекурсивный вызов для правой ветви.}
+  end;
+end;
+begin
+SetLength(numArrBinTr, randNumLen);
+{$R-}
+  for i:=0 to randNumLen-1 do
+  numArrBinTr[i] := originArr[i];
+{$R+}
+BinTrAlg:=GetTickCount;
+ begin
+      TThread.Queue(nil,
+        procedure
+        begin
+          Form1.Memo7.Lines.Clear;
+        end
+      );
+ end;
+ PTree := nil;
+  for i := Low(numArrBinTr) to High(numArrBinTr) do
+   AddNodeAsc(PTree, numArrBinTr[i]);
+    i := 0;
+  Sort(PTree, numArrBinTr, i);
+ BinTrAlg:=(GetTickCount - BinTrAlg);
+   begin
+      TThread.Queue(nil,
+        procedure
+        var j:integer;
+        begin
+        TreeFree(PTree);
+        if BinTrAlg/1000<0.0001 then
+          Form3.Label6.Text:='Алгоритм сортировки с помощью двоиного дерева: менее 0.0001 секунды, количество повторений: '+IntToStr(BinTrCounter)
+        else
+          Form3.Label6.Text:='Алгоритм сортировки с помощью двоиного дерева: '+ Format('%.4n сек.', [BinTrAlg/1000])+', количество повторений: '+IntToStr(BinTrCounter);
+          if Form3.CheckBox7.IsChecked=True then
+          begin
+            for j:=0 to randNumLen-1 do
+            Form1.Memo7.Lines.Add(IntToStr(numArrBinTr[j]));
+          end;
+        end
+      );
+ end;
+ BinTrBool:=true;
+Terminate;
+end;
+
+procedure Search(sortingArray: array of integer; SrchInt: Integer);
+var tmpInt, k, m:integer;
+function binarySort(sortingArray: array of integer; SrchInt: Integer; start, stop:integer): Integer;
+var mid: integer;
+begin
+  if start>stop then
+  begin
+    Result:=-1;
+    Exit;
+  end
+  else
+    mid:=(start+stop) div 2;
+  if SrchInt=sortingArray[mid] then
+  begin
+    Result:=mid;
+    Exit;
+  end
+  else if SrchInt<sortingArray[mid] then
+    Result:=binarySort(sortingArray, SrchInt, start, mid-1)
+  else if SrchInt>sortingArray[mid] then
+    Result:=binarySort(sortingArray, SrchInt, mid+1, stop);
+end;
+
+begin
+tmpInt:=0;
+k:=binarySort(sortingArray, SrchInt, 0, randNumLen);
+if (k=-1) then
+ShowMessage('Совпадений не найдено')
+else
+begin
+while pos(IntToStr(SrchInt),IntToStr(sortingArray[k]))>0 do
+begin
+  if k=0 then
+  begin
+    m:=0;
+    Break;
+  end
+  else
+    dec(k);
+end;
+if k=0 then
+k:=k
+else
+k:=k+1;
+while pos(IntToStr(SrchInt),IntToStr(sortingArray[k]))>0 do
+  begin
+    Inc(tmpInt);
+    Inc(k);
+  end;
+  case tmpInt of
+    1,21,31,41,51,61,71,81,91,101,121,131,141,151,161,171,181,191,201,221,231,241,251: ShowMessage('Найдено '+IntToStr(tmpInt)+' совпадение');
+    2,22,32,42,52,62,72,82,92,102,122,132,142,152,162,172,182,192,202,222,232,242,252: ShowMessage('Найдено '+IntToStr(tmpInt)+' совпадения');
+    3,23,33,43,53,63,73,83,93,103,123,133,143,153,163,173,183,193,203,223,2332,243,253: ShowMessage('Найдено '+IntToStr(tmpInt)+' совпадения');
+    4,24,34,44,54,64,74,84,94,104,124,134,144,154,164,174,184,194,204,224,234,244,254: ShowMessage('Найдено '+IntToStr(tmpInt)+' совпадения');
+    else ShowMessage('Найдено '+IntToStr(tmpInt)+' совпадений');
+  end;
+  end;
+end;
+
+//*************************Generate Random Array***********
+//*********************************************************
+//*********************************************************
+procedure TForm3.Button1Click(Sender: TObject);
+var
+  i, randNumRange, randNum:integer;
+begin
+  Form1.Memo1.Lines.Clear;
+  BblBool:=false;
+  StrBool:=false;
+  InsBool:=false;
+  GnmBool:=false;
+  MrgBool:=false;
+  BinTrBool:=false;
+  fillchar(numArrBbl,sizeof(numArrBbl),0);
+  fillchar(numArrStr,sizeof(numArrStr),0);
+  fillchar(numArrIns,sizeof(numArrIns),0);
+  fillchar(numArrGnm,sizeof(numArrGnm),0);
+  fillchar(numArrMrg,sizeof(numArrMrg),0);
+  fillchar(numArrBinTr,sizeof(numArrBinTr),0);
+  Str:='';
+//Try transform string to int - range numbers
+ if tryStrToInt(Edit1.Text, randNumRange) then
+    randNumRange:=randNumRange
+ else
+   begin
+     ShowMessage('Введите целое число - границу случайных чисел');
+     Exit;
+   end;
+ //Try transform string to int - length numbers
+ if tryStrToInt(Edit2.Text, randNumLen) then
+    randNumLen:=randNumLen
+ else
+   begin
+     ShowMessage('Введите целое число - необходимое коичество чисел');
+     Exit;
+   end;
+   SetLength(originArr, randNumLen);
+ //Fill in Memo
+ for i:=0 to randNumLen-1 do
+   begin
+      randNum:=Random(randNumRange);
+      if CheckBox7.IsChecked=True then
+      Form1.Memo1.Lines.Add(IntToStr(randNum));
+      originArr[i]:=randNum;
+   end;
+end;
+//*************************Start Sorting Array*************
+//*********************************************************
+//*********************************************************
+procedure TForm3.Button2Click(Sender: TObject);
+begin
+  Label8.Text:='Алгоритм сортировки методом пузырька';
+  Label9.Text:='Алгоритм сортировки перемешиванием';
+  Label10.Text:='Алгоритм сортировки вставками';
+  Label3.Text:='Алгоритм гномьей сортировки';
+  Label4.Text:='Алгоритм сортировки слиянием';
+  Label6.Text:='Алгоритм сортировки с помощью двоиного дерева';
+  if CheckBox1.IsChecked=true then
+    begin
+    BblCounter:=0;
+    Label8.Text:=Label8.Text+': Выполнение....';
+    BubbleSort.Create(False);
+    end;
+  if CheckBox2.IsChecked=true then
+    begin
+    StrCounter:=0;
+    Label9.Text:=Label9.Text+': Выполнение....';
+    StirSort.Create(False);
+    end;
+  if CheckBox3.IsChecked=true then
+    begin
+      InsCounter:=0;
+      Label10.Text:=Label10.Text+': Выполнение....';
+      InsSort.Create(False);
+    end;
+  if CheckBox4.IsChecked=true then
+    begin
+      GnmCounter:=0;
+      Label3.Text:=Label3.Text+': Выполнение....';
+      GnomeSort.Create(False);
+    end;
+  if CheckBox5.IsChecked=true then
+    begin
+      MrgCounter:=0;
+      Label4.Text:=Label4.Text+': Выполнение....';
+      MergeSort.Create(False);
+    end;
+    if CheckBox6.IsChecked=true then
+    begin
+      BinTrCounter:=0;
+      Label6.Text:=Label6.Text+': Выполнение....';
+      BinTreeSort.Create(False);
+    end;
+end;
+//*************************Start Search********************
+//*********************************************************
+//*********************************************************
+procedure TForm3.Button3Click(Sender: TObject);
+var searchingInt: integer;
+begin
+if tryStrToInt(SearchEdit.Text, searchingInt) then
+    searchingInt:=searchingInt
+else
+   begin
+     ShowMessage('Введите целое число - искомое число');
+     Exit;
+   end;
+if BblBool=true then
+   Search(numArrBbl,searchingInt)
+else if StrBool=true then
+   Search(numArrStr,searchingInt)
+else if InsBool=true then
+   Search(numArrIns,searchingInt)
+else if GnmBool=true then
+   Search(numArrGnm,searchingInt)
+else if MrgBool=true then
+   Search(numArrMrg,searchingInt)
+else if BinTrBool=true then
+   Search(numArrBinTr,searchingInt);
+end;
+
+procedure TForm3.Button4Click(Sender: TObject);
+begin
+Form1.Show;
+end;
+
+procedure TForm3.CheckBox7Click(Sender: TObject);
+begin
+if CheckBox7.IsChecked=False then
+Button4.Enabled:=True
+else
+Button4.Enabled:=False;
+end;
+
+procedure TForm3.FormCreate(Sender: TObject);
+begin
+Image1.Hint:=
+'Программа будет заполнять поля ввода, для наглядного'+#13+
+'отображения созданных и сортируемых массивов. '+#13+
+'Не рекомендуется использовать для больших чисел, так '+#13+
+'как может привести к замедлению работы программы, а '+#13+
+'также к ее зависанию.';
+end;
+
+end.

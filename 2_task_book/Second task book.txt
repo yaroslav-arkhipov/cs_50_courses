@@ -1,0 +1,17 @@
+1 task - First words of names
+
+Write a program that asks for the username (using the GetString function, we get the name as a string) and then displays the first letters of the name (or names) and last name in uppercase without spaces, periods or other characters, only with a newline (\ n). We assume that users enter only letters (in lower or upper case, or both at once) plus one space between words. Consider guys named Joseph Gordon-Levitt, Conan O’Brien or David J. Malan not using the program.
+
+2 task - Ave Caesar
+
+Write a program that encrypts the entered string using Caesar's cipher.
+Job parsing:
+
+1. Get a key
+2. Get text
+3. Encrypt
+4. Display encrypted message
+
+3 task - Parlez-vous français?
+
+Vizhener's cipher is somewhat safer than Caesar's cipher: it uses a word as a key and is difficult to crack manually using frequency analysis or brute force alone. Each letter of the key generates a number, and as a result we get several several keys for shifting letters.

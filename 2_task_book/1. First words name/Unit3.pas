@@ -1,0 +1,50 @@
+unit Unit3;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Edit,
+  FMX.StdCtrls, FMX.Controls.Presentation;
+
+type
+  TForm3 = class(TForm)
+    Label1: TLabel;
+    Button1: TButton;
+    Edit1: TEdit;
+    Label2: TLabel;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.fmx}
+
+procedure TForm3.Button1Click(Sender: TObject);
+var
+s, tempStr, fStr:string;
+begin
+s:='';
+tempStr:='';
+fStr:='';
+s:=Edit1.Text;
+s:=s+' ';
+while s.Length>0 do
+begin
+ tempStr:=Copy(s,1,pos(' ',s));
+ fStr:=fStr+Copy(tempStr,1,1);
+ Delete(s,1,tempStr.Length);
+ tempStr:='';
+end;
+fStr:=AnsiUpperCase(fStr);
+Label1.Text:='Инициалы: '+fStr;
+end;
+
+end.
