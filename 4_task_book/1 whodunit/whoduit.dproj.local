@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2020.04.18 18:14:27.956,=C:\Users\Yaroslav\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2020.04.18 18:22:55.559,C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\Unit4.pas=C:\Users\Yaroslav\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2020.04.18 18:22:55.559,C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\Unit4.dfm=C:\Users\Yaroslav\Documents\Embarcadero\Studio\Projects\Unit4.dfm</Transaction>
+    <Transaction>2020.04.18 18:22:58.832,C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\Project5.dproj=C:\Users\Yaroslav\Documents\Embarcadero\Studio\Projects\Project5.dproj</Transaction>
+    <Transaction>2020.04.18 19:21:40.433,C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\whoduit.dproj=C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\Project5.dproj</Transaction>
+    <Transaction>2020.04.18 19:21:55.726,C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\whoduit.pas=C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\Unit4.pas</Transaction>
+    <Transaction>2020.04.18 19:21:55.726,C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\whoduit.dfm=C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\Unit4.dfm</Transaction>
+    <Transaction>2020.04.18 19:22:54.435,C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\Unit3.pas=C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\whoduit.pas</Transaction>
+    <Transaction>2020.04.18 19:22:54.435,C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\Unit3.dfm=C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\whoduit.dfm</Transaction>
+    <Transaction>2020.04.18 19:23:01.010,C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\Unit4.pas=C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\Unit3.pas</Transaction>
+    <Transaction>2020.04.18 19:23:01.010,C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\Unit4.dfm=C:\Users\Yaroslav\Desktop\cs50\4_task_book\23\Unit3.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

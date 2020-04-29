@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2020.04.21 19:11:24.600,=C:\Users\Yaroslav\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2020.04.21 19:42:49.674,C:\Users\Yaroslav\Desktop\cs50\4_task_book\2 imagesize\Unit4.dfm=C:\Users\Yaroslav\Documents\Embarcadero\Studio\Projects\Unit4.dfm</Transaction>
+    <Transaction>2020.04.21 19:42:49.674,C:\Users\Yaroslav\Desktop\cs50\4_task_book\2 imagesize\Unit4.pas=C:\Users\Yaroslav\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2020.04.21 19:42:53.496,C:\Users\Yaroslav\Desktop\cs50\4_task_book\2 imagesize\Project5.dproj=C:\Users\Yaroslav\Documents\Embarcadero\Studio\Projects\Project5.dproj</Transaction>
+    <Transaction>2020.04.21 19:43:38.955,C:\Users\Yaroslav\Desktop\cs50\4_task_book\2 imagesize\Resize.dproj=C:\Users\Yaroslav\Desktop\cs50\4_task_book\2 imagesize\Project5.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

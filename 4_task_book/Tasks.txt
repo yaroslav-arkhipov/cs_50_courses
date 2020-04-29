@@ -1,0 +1,11 @@
+1 task - whodunit
+
+Write a program called whodunit in a file called whodunit that shows Mr. Boddy's drawing.
+
+2 task - Resize
+
+Well, now - the next test! Let's write a program called resize in the resize file. It will resize the uncompressed 24-bit BMP image in increments of n. Your application must take exactly three command line arguments, the first (n) must be an integer of no more than 100, the second with the name of the file to be modified, and the third with the name of the saved version of the changed file.
+
+3 task - Recover
+
+While waiting for the fourth week's booklet, I spent the last few days watching photos saved by my digital camera in JPEG format on a 1 GB CompactFlash (CF) memory card. Just don't tell me, please, that I actually spent the last few days on Facebook instead. Unfortunately, my computer skills leave much to be desired, and I, without knowing it, accidentally deleted all the photos! Fortunately, the computer world, “deleted” does not usually equal “killed”. My computer insists that the memory card is now empty, but I know that it is lying. Task: Write in ~ / workspace / pset4 / jpg / recover a program that will restore these photos. Hmmm. Okay, here's some more clarification.
